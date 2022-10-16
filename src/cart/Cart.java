@@ -26,18 +26,17 @@ public class Cart extends JComponent {
     private Animator animator;
     private float animate;
     private boolean show;
-
-    private ModelCart model = new ModelCart("Rich Red Blend",
-            "35$",
-            "The Grid enables you to set its column widths in percentage by using a function that will programmatically calculate the real width based on the passed percentage value.",
-            new ImageIcon(getClass().getResource("/test/p2.png")));
+    private CartLayer cartLayer;
+    private ModelCart model = new ModelCart("Title",
+            "0.00$",
+            "Description",
+            new ImageIcon(getClass().getResource("/cart/p1.png")));
 
     public Cart() {
         setBackground(Color.WHITE);
         setLayout(new BorderLayout());
-        CartLayer cartLayer = new CartLayer();
+        cartLayer = new CartLayer();
         add(new JLayer(cartLayer, new CartLayerUI()));
-        cartLayer.setModel(model);
         initAnimator();
     }
 
@@ -174,5 +173,6 @@ public class Cart extends JComponent {
 
     public void setModel(ModelCart model) {
         this.model = model;
+        cartLayer.setModel(model);
     }
 }
